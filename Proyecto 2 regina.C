@@ -59,3 +59,33 @@ char *cortar_string(char str[], int slice_from, int slice_to)
     strncpy(buffer, str, buffer_len);
     return buffer;
 }
+int convertir(char letra)
+{
+    if (&letra == "A")
+    {
+        return 0;
+    }
+    else if (&letra == "B")
+    {
+        return 1;
+    }
+    else if (&letra == "C")
+    {
+        return 2;
+    }
+    else if (&letra == "D")
+    {
+        return 3;
+    }
+    else if (&letra == "E")
+    {
+        return 4;
+    }
+    else if (&letra == "F")
+    {
+        return 5;
+    }
+    else
+    {
+        return 0;
+    }
