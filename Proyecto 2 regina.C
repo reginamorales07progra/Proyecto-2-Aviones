@@ -89,3 +89,80 @@ int convertir(char letra)
     {
         return 0;
     }
+}
+void clearscreen()
+{
+    system("@cls||clear");
+}
+void resumen()
+{
+    char *wait;
+    clearscreen();
+    int reservado;
+    int libres;
+    for (int i = 0; i < 32; i++)
+    {
+        for (int j = 0; j < 6; j++)
+        {
+            char* pool = reservados[j][i];
+            if (pool == "X")
+            {
+                reservado++;
+            }
+        }
+    }
+    printf("### RESUMEN\n");
+    printf("Reservados: %d/32\n", reservado);
+    printf("Libres: %d/32", 32 - reservado);
+    scanf("%s", wait);
+
+}
+void disponibles()
+{
+    char *wait;
+    clearscreen();
+    printf("|\t|A\t|B\t|C\t|D\t|E\t|F\t|\n");
+    printf("---------------------------------------------------------\n");
+    for (int i = 0; i < 32; i++)
+    {
+        printf("|%d\t", i + 1);
+        printf("|%s\t", reservados[0][i]);
+        printf("|%s\t", reservados[1][i]);
+        printf("|%s\t", reservados[2][i]);
+        printf("|%s\t", reservados[3][i]);
+        printf("|%s\t", reservados[4][i]);
+        printf("|%s\t", reservados[5][i]);
+        printf("|\t\n");
+    }
+    printf("---------------------------------------------------------\n");
+    scanf("%s", wait);
+}
+void reservar()
+{
+    char *wait;
+    char peticion[3];
+    clearscreen();
+    printf("Vuelo: %s\n\n", vuelo);
+    printf("Ingrese asiento a reservar: ");
+    scanf("%s", peticion);
+    int columna = convertir(peticion[0]);
+    char *linea = cortar_string(peticion, 1, 3);
+    char *lugar = reservados[columna][(int)*linea-1];
+
+    if (lugar == "0")
+    {
+        clearscreen();
+        reservados[columna][(int)*linea - 1] = "X";
+        printf("Asiento '%s' reservado exitosamente!!\n\n", peticion);
+        printf("Presione 'Enter'\n");
+        scanf("%s", wait);
+    }
+    else
+    {
+        clearscreen();
+        printf("Asiento '%s' ya reservado, ingrese otro asiento\n\n", peticion);
+        printf("Presione 'Enter'\n");
+        scanf("%s", wait);
+    }
+    clearscreen();
+}
