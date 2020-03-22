@@ -166,3 +166,37 @@ void reservar()
     }
     clearscreen();
 }
+int main()
+{
+    printf("Ingrese Numero de Vuelo (5 caracteres): ");
+    scanf("%s", vuelo);
+    while (1)
+    {
+        clearscreen();
+        printf("Bienvenido al TRv1 \t\t Vuelo: %s\n", vuelo);
+        int opciones;
+        printf("\n 1. Reservar asiento\n 2. Ver asiento disponibles\n 3. Ver Resumen.\n 4. Salir\n");
+        scanf("%d", &opciones);
+        switch (opciones)
+        {
+        case 4:
+            exit(0);
+            break;
+        case 3:
+            resumen();
+            break;
+        case 2:
+            disponibles();
+            break;
+        case 1:
+            reservar();
+            break;
+        default:
+            exit(0);
+            break;
+        }
+        clearscreen();
+    }
+
+    return 0;
+}
